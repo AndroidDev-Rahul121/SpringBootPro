@@ -21,13 +21,28 @@ public interface FriendRequestRepo extends JpaRepository<FrientdRequest, Integer
     //List<FrientdRequest> findByTenant(Optional<TenantDetails> tenant);
     @Query(value = "SELECT * FROM friendrequest_tbl where tenant_id = ?1", nativeQuery = true)
     List<FrientdRequest> findByTenantDetails(int tenantId);
-
+    @Query(value = "SELECT * FROM friendrequest_tbl where recever_id = ?1", nativeQuery = true)
+    List<FrientdRequest> findByReceverId(int brokerId);
 
     @Query(value = "SELECT * FROM friendrequest_tbl where tenant_id = ?1", nativeQuery = true)
     List<FrientdRequest> findByTenantDetailsAndStatusAndRecever(int tenantId,String status,String recever);
- @Query(value = "SELECT * FROM friendrequest_tbl where broker_id = ?1", nativeQuery = true)
-    List<FrientdRequest> findByBrokerDetails(int brokerId);
+
+    @Query(value = "SELECT * FROM friendrequest_tbl where landlord_id = ?1", nativeQuery = true)
+    List<FrientdRequest> findByLandlordDetailsAndStatusAndRecever(int tenantId,String status,String recever);
+
+    @Query(value = "SELECT * FROM friendrequest_tbl where broker_id = ?1", nativeQuery = true)
+    List<FrientdRequest> findByBrokerDetailsAndStatusAndRecever(int tenantId,String status,String recever);
+
+//    @Query(value = "SELECT * FROM friendrequest_tbl WHERE broker_id = ?1 OR some_other_column = ?2", nativeQuery = true)
+    @Query(value = "SELECT * FROM friendrequest_tbl where broker_id = ?1 OR broker2_id = ?1", nativeQuery = true)
+    List<FrientdRequest> findByBrokerDetails(int tenantId);
+
 
     boolean existsBySenderIdAndReceverIdAndStatusAndSenderAndRecever(int senderId, int receiverId, String pending,String sender,String recever);
-//    boolean existsBySenderAndReceiverAndStatus(int senderId, int receiverId, String pending);
+//    boolean existsBySenderAndReceiverAndStatus(int senrderId, int receiverId, String pending);
+
+    List<FrientdRequest> findByReceverIdAndRecever(int userId,String receiverType);
+//    findByReceiverIdAndReceiverType(userId, receiverType)
+
+
 }

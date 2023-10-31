@@ -29,6 +29,10 @@ public class FrientdRequest {
     @JoinColumn(name = "broker_id")
     private  BrokerDetails broker;
 
+    @ManyToOne
+    @JoinColumn(name = "broker2_id")
+    private  BrokerDetails broker2;
+
 
     // Status can be PENDING, ACCEPTED, REJECTED, etc.
     @Column(name = "status")
