@@ -5,6 +5,7 @@ import com.example.landlord.entitiy.TenantDetails;
 import com.example.landlord.service.LandlordService;
 import com.example.landlord.service.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/tenants")
-public class TenantController {
+public class TenantController implements ErrorController {
 
 
         @Autowired
