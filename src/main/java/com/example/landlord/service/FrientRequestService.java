@@ -33,7 +33,7 @@ public class FrientRequestService {
     private LandlordDetailsRepo landlordDetailsRepo;
     @Autowired
     private TenantDetailsRepo tenantDetailsRepo;
-
+//hukhu
     @Autowired
     private BrokerDetailsRepo brokerDetailsRepo;
 
@@ -47,6 +47,9 @@ public class FrientRequestService {
         int receiverId = frientRequestDto.getRecever_id();
         String receiverType = frientRequestDto.getRecever_type();
 //         Check if a friend request already exists between the sender and receiver
+
+
+
 
         if ((friendRequestRepo.existsBySenderIdAndReceverIdAndStatusAndSenderAndRecever(senderId, receiverId, "PENDING",senderType,receiverType))||
                 (friendRequestRepo.existsBySenderIdAndReceverIdAndStatusAndSenderAndRecever(receiverId, senderId, Status.PENDING.toString(),receiverType,senderType))) {
